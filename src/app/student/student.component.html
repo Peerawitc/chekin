@@ -1,0 +1,63 @@
+<header class="text-center fs-1 header">ระบบเช็คชื่อนักเรียน</header>
+
+<body>
+    <div class="card p-4">
+
+        <label style="width: 100px"><b>ระดับชั้น</b></label>
+        <select class="form-select" [(ngModel)]="grade" (ngModelChange)="gradeChange()">
+            <option *ngFor="let name of opts" [ngValue]="name.Value">
+                {{ name.Name }}
+            </option>
+        </select>
+
+        <label style="width: 100px"><b>ห้องเรียน</b></label>
+        <select class="form-select" [(ngModel)]="room_ref" (ngModelChange)="roomChange()">
+            <option *ngFor="let room of rooms" [ngValue]="room.Value">
+                {{ " ห้อง " + room.Name }}
+            </option>
+        </select>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <th>Ref</th>
+                <th>GradeName</th>
+                <th>RoomName</th>
+                <th>No</th>
+                <th>Code</th>
+                <th>Title</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>IdCard</th>
+                <th>Status</th>
+                <th>มาเรียน</th>
+                <th>ขาดเรียน</th>
+                <th>ลากิจ</th>
+                <th>ลาป่วย</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students " [ngClass]="student.StatusID === 1 ? 'label-green' :
+                student.StatusID === 2 ? 'label-red' :
+                student.StatusID === 3 ? 'label-blue'  :
+                student.StatusID === 4 ? 'label-orange'  :
+                 '' " >    
+                   
+                    <td>{{ student.Ref }}</td>
+                    <td>{{ student.GradeName }}</td>
+                    <td>{{ student.RoomName }}</td>
+                    <td>{{ student.No }}</td>
+                    <td>{{ student.Code }}</td>
+                    <td>{{ student.Title }}</td>
+                    <td>{{ student.FirstName }}</td>
+                    <td>{{ student.LastName }}</td>
+                    <td>{{ student.IdCard }}</td>
+                    <td>{{ student.StatusName}}</td>
+                    <td><button class = "label-green"(click)="updateCheckIn(student.Ref,1)">มาเรียน</button></td>
+                    <td><button class = "label-red"(click)="updateCheckIn(student.Ref,2)">ขาดเรียน</button></td>
+                    <td><button class = "label-blue"(click)="updateCheckIn(student.Ref,3)">ลากิจ</button></td>
+                    <td><button class = "label-orange"(click)="updateCheckIn(student.Ref,4)">ลาป่วย</button></td>
+                </tr>
+                 
+            </tbody>
+        </table>
+    </div>
+    
+</body>

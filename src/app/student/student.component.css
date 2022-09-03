@@ -1,0 +1,15 @@
+.label-blue{
+    background-color: rgb(114, 114, 224);
+}
+.label-red{
+    background-color: rgb(238, 130, 130);
+}
+.label-green{
+    background-color: rgb(134, 230, 134);
+}
+.label-orange{
+    background-color: rgb(245, 197, 108);
+}
+.header{
+    background-color: pink;
+}
